@@ -5,7 +5,7 @@ Employee Tracker using MySQL
 
 ## Description : 
 ***MySQL*** <br>
-This applicaiton with allow non-developers to easily view and interact with a *company's employee database* using a **content managment system(CMS)**. 
+This applicaiton with allow non-developers to easily view and interact with a *company's employee database using a **content managment system(CMS)**. 
 It is built as a command-line app using *Node.js*, *Inquirer*, and *MySQL*. 
 
 
