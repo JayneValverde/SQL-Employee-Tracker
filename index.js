@@ -19,8 +19,14 @@ const connection = mysql.createConnection({
         database: 'employee_db'
     });
 
-// TODO: Welcome Banner 
-
+// TODO: Welcome Banner -> console.log
+console.log(chalk.orange.bold('======================================================================================================='));
+console.log(``);
+console.log(chalk.green.bold(figlet.textSync('EMPLOYEE TRACKER')));
+console.log(``);
+console.log(`                               ` + chalk.blue.bold('(C)ONTENT (M)ANAGEMENT (S)YSTEM')); 
+console.log(``);
+console.log(chalk.orange.bold(`=======================================================================================================`))
 
 // TODO: Create prompts / arrays 
 
