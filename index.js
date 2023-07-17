@@ -14,21 +14,21 @@ const connection = mysql.createConnection({
         database: 'employee_db'
     });
 
-    connection.connect(function(err) {
-        if(err) throw err;
-        console.log("connected as id " + connection.threadId);
-        console.log(`
-        ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
-        ▐  ▄▀   ▐ █  █ ▀  █ █   █   █ █    █    █      █ █   ▀▄ ▄▀ ▐  ▄▀   ▐ ▐  ▄▀   ▐     █    █  ▐ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀ ▐  ▄▀   ▐ █   █   █ 
-          █▄▄▄▄▄  ▐  █    █ ▐  █▀▀▀▀  ▐    █    █      █ ▐     █     █▄▄▄▄▄    █▄▄▄▄▄      ▐   █     ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄    █▄▄▄▄▄  ▐  █▀▀█▀  
-          █    ▌    █    █     █          █     ▀▄    ▄▀       █     █    ▌    █    ▌         █       ▄▀    █   ▄▀   █   █        █   █   █    ▌   ▄▀    █  
-         ▄▀▄▄▄▄   ▄▀   ▄▀    ▄▀         ▄▀▄▄▄▄▄▄▀ ▀▀▀▀       ▄▀     ▄▀▄▄▄▄    ▄▀▄▄▄▄        ▄▀       █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █   ▄▀▄▄▄▄   █     █   
-         █    ▐   █    █    █           █                    █      █    ▐    █    ▐       █         ▐     ▐   ▐   ▐   █     ▐  █    ▐   █    ▐   ▐     ▐   
-         ▐        ▐    ▐    ▐           ▐                    ▐      ▐         ▐            ▐                           ▐        ▐        ▐                  
-        `)
-        // runs the app
-        firstPrompt();
-    });
+connection.connect(function(err) {
+    if(err) throw err;
+    console.log("connected as id " + connection.threadId);
+    console.log(`
+    ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
+    ▐  ▄▀   ▐ █  █ ▀  █ █   █   █ █    █    █      █ █   ▀▄ ▄▀ ▐  ▄▀   ▐ ▐  ▄▀   ▐     █    █  ▐ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀ ▐  ▄▀   ▐ █   █   █ 
+        █▄▄▄▄▄  ▐  █    █ ▐  █▀▀▀▀  ▐    █    █      █ ▐     █     █▄▄▄▄▄    █▄▄▄▄▄      ▐   █     ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄    █▄▄▄▄▄  ▐  █▀▀█▀  
+        █    ▌    █    █     █          █     ▀▄    ▄▀       █     █    ▌    █    ▌         █       ▄▀    █   ▄▀   █   █        █   █   █    ▌   ▄▀    █  
+        ▄▀▄▄▄▄   ▄▀   ▄▀    ▄▀         ▄▀▄▄▄▄▄▄▀ ▀▀▀▀       ▄▀     ▄▀▄▄▄▄    ▄▀▄▄▄▄        ▄▀       █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █   ▄▀▄▄▄▄   █     █   
+        █    ▐   █    █    █           █                    █      █    ▐    █    ▐       █         ▐     ▐   ▐   ▐   █     ▐  █    ▐   █    ▐   ▐     ▐   
+        ▐        ▐    ▐    ▐           ▐                    ▐      ▐         ▐            ▐                           ▐        ▐        ▐                  
+    `)
+    // runs the app
+    firstPrompt();
+});
 
 // TODO: Create prompts / arrays 
 
@@ -142,6 +142,7 @@ const viewEmployeesByManager = () => {
 
 
 // TODO: ADD Functions 
+// ADD NEW EMPLOYEE ===============================================================
 const addNewEmployee = () => {
     connection.query('SELECT * FROM role', (err, roles) => {
         if (err) console.log(err);
@@ -196,6 +197,54 @@ const addNewEmployee = () => {
     });
 };
 
+// ADD NEW ROLE ===============================================================
+const addNewRole = () => {
+    connection.query('SELECT * FROM department', (err, departments) => {
+        if (err) console.log(err); 
+        departments = departments.map((department) => {
+            return {
+                name: department.name, 
+                value: department.id, 
+            };
+        });
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'newRole',
+                    message: 'Enter title of new role'
+                },
+                {
+                    type: 'input',
+                    name: 'salary', 
+                    message: 'Enter salary of new role'
+                },
+                {
+                    type: 'list', 
+                    name: 'departmentId',
+                    message: 'Enter department of new role', 
+                    choices: departments, 
+                },
+            ])
+            .then((data) => {
+                connection.query(
+                    'INSERT INTO role SET ?',
+                    {
+                        title: data.newRole, 
+                        salary: data.salary, 
+                        department_id: data.departmentId, 
+                    },
+                    function (err) {
+                        if (err) throw err;
+                    }
+                );
+                console.log('added new employee role!')
+                viewAllRoles();
+            });
+    });
+};
+
+// ADD NEW DEPARTMENT ===============================================================
 const addNewDepartment = () => {
     inquirer 
         .prompt([
@@ -208,9 +257,23 @@ const addNewDepartment = () => {
         .then((data) => {
             connection.query('INSERT INTO department SET ?',
             {
-                
-            })
-        })
-}
+                name: data.newDepartment, 
+            },
+            function (err) {
+                if (err) throw err;
+            }
+        );
+        console.log('New department added to database')
+        viewAllDepartments();
+        });
+};
+
+connection.connect((err) => {
+    if (err) throw err; 
+
+    firstPrompt();
+});
+
+
 
 // TODO: Async Funcitons? 
