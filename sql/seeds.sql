@@ -14,13 +14,13 @@ VALUES
 ('Sales Lead', 100000, 1),
 ('Sales Associate', 80000, 1),
 
-('Legal Team Lead', 250000, 2)
+('Legal Team Lead', 250000, 2),
 ('Lawer', 190000, 2),
 
 ('Account Manager', 160000, 3),
 ('Accountant', 125000, 3),
 
-('Lead Engineer' 150000, 4),
+('Lead Engineer', 150000, 4),
 ('Software Engineer', 120000, 4);
 
 INSERT INTO employee 
@@ -28,15 +28,15 @@ INSERT INTO employee
 
 -- TODO: are the roll(id)s matching with the manager(id)s???
 VALUES
-('John', 'Doe', 1, NULL),
+('John', 'Doe', 1, NOT NULL),
 ('Mike', 'Smith', 2, 1),
 
-('Maria', 'Garcia', 3, NULL),
+('Maria', 'Garcia', 3, NOT NULL),
 ('Robert', 'Johnson', 4, 3),
 
-('Penny', 'Clifford', 5, NULL),
+('Penny', 'Clifford', 5, NOT NULL),
 ('Randy', 'Gilmore', 6, 5),
 
-('Oliver', 'Walker', 7, NULL),
+('Oliver', 'Walker', 7, NOT NULL),
 ('Helen', 'Sawyer', 8, 7);
 
