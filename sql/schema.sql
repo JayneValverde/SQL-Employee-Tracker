@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS employee_db;
+DROP DATABASE IF EXISTS employee_tabledb;
 CREATE DATABASE employee_db;
 
 USE employee_db;
@@ -14,9 +14,8 @@ CREATE TABLE role (
     title VARCHAR(30) NOT NULL, 
     salary DECIMAL NOT NULL, 
     department_id INT NOT NULL, 
-    FORIEGN KEY (department_id) REFERENCES department(id),
+    FOREIGN KEY (department_id) REFERENCES department(id),
     PRIMARY KEY (id)
-
 );
 
 CREATE TABLE employee (
@@ -24,8 +23,8 @@ CREATE TABLE employee (
     first_name VARCHAR(30) NOT NULL, 
     last_name VARCHAR(30) NOT NULL, 
     role_id INT NOT NULL, 
-    FORIEGN KEY (role_id) REFERENCES role(id),
+    FOREIGN KEY (role_id) REFERENCES role(id),
     manager_id INT NOT NULL, 
-    FORIEGN KEY (manager_id) REFERENCES manager(id),
+    FOREIGN KEY (manager_id) REFERENCES employees(id),
     PRIMARY KEY (id);
 );
