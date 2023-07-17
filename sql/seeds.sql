@@ -28,15 +28,15 @@ INSERT INTO employee
 
 -- TODO: are the roll(id)s matching with the manager(id)s???
 VALUES
-('John', 'Doe', 1, NOT NULL),
+('John', 'Doe', 1, NULL),
 ('Mike', 'Smith', 2, 1),
 
-('Maria', 'Garcia', 3, NOT NULL),
+('Maria', 'Garcia', 3, NULL),
 ('Robert', 'Johnson', 4, 3),
 
-('Penny', 'Clifford', 5, NOT NULL),
+('Penny', 'Clifford', 5, NULL),
 ('Randy', 'Gilmore', 6, 5),
 
-('Oliver', 'Walker', 7, NOT NULL),
+('Oliver', 'Walker', 7, NULL),
 ('Helen', 'Sawyer', 8, 7);
 

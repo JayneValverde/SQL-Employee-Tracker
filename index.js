@@ -14,8 +14,8 @@ const connection = mysql.createConnection({
         database: 'employee_db'
     });
 
-    connection.connect(function (err) {
-        if (err) throw err;
+    connection.connect(function(err) {
+        if(err) throw err;
         console.log("connected as id " + connection.threadId);
         console.log(`
         ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
@@ -47,11 +47,12 @@ const firstPrompt = () => {
                 "Add Employee",
                 "Add Roll", 
                 "Add New Department", 
-                chalk.orange('Update Employee Manager'),
-                chalk.orange('Delete Employee'),
-                chalk.orange('Delete Role'),
-                chalk.orange('Delete Department'),
-                'Exut Menu',
+                "Update Employee Manager",
+                // console.log(`===========`),
+                "Delete Employee",
+                "Delete Role",
+                "Delete Department",
+                "Exut Menu",
             ],
         }).then((answers) => {
             const { choices } = answers; 
@@ -141,6 +142,75 @@ const viewEmployeesByManager = () => {
 
 
 // TODO: ADD Functions 
+const addNewEmployee = () => {
+    connection.query('SELECT * FROM role', (err, roles) => {
+        if (err) console.log(err);
+        roles = roles.map((role) => { 
+            return { 
+                name: role.title, 
+                value: role.id, 
+            };
+        });
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'Enter first name of new Employee'
+                },
+                {
+                    type: 'input',
+                    name: 'lastName',
+                    message: 'Enter last name of new Employee'
+                },
+                {
+                    type: 'list',
+                    name: 'role',
+                    message: 'Enter new employee role',
+                    choices: roles, 
+                },
+                {
+                    type: 'list',
+                    name: 'role',
+                    message: 'Select a manager id',
+                    choices: [1, 3, 5, 7]
+                }
+            ])
+            .then((data) => {
+                console.log(data.role);
+                connection.query(
+                    'INSERT INTO employee SET ?',
+                    {
+                        first_name: data.firstName, 
+                        last_name: data.lastName, 
+                        role_id: data.role, 
+                        manager_id: data.managerId
+                    },
+                    (err) => {
+                        if (err) throw err; 
+                        console.log('Update Employee Roster;');
+                        viewAllEmployees();
+                    }
+                );
+            });
+    });
+};
 
+const addNewDepartment = () => {
+    inquirer 
+        .prompt([
+            {
+                type: 'input',
+                name: 'newDepartment',
+                message: 'Enter new department name'
+            },
+        ])
+        .then((data) => {
+            connection.query('INSERT INTO department SET ?',
+            {
+                
+            })
+        })
+}
 
-// TODO: Async Funcitons?
+// TODO: Async Funcitons? 
