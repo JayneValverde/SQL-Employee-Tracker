@@ -4,7 +4,8 @@
   "description": "CMS for employee database",
   "main": "index.js",
   "scripts": {
-    "start" :"node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
     "figlet": "^1.6.0",
     "inquirer": "^8.2.4",
     "mysql2": "^3.5.1"
+  },
+  "devDependencies": {
+    "ws": "3.3.2"
   }
 }

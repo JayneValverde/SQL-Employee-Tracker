@@ -2,31 +2,34 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
-// string styling
-const chalk = require('chalk');
-
-// FIGFont in Javascript
-const figlet = require('figlet');
-
 // Print MySQL rows to the console 
 require('console.table');
 
 // TODO: Connect to database
 const connection = mysql.createConnection({
         host: 'localhost',
+        port: 3306,
         user: 'root',
-        passowrd: '',
+        passowrd: 'Waffles90!',
         database: 'employee_db'
     });
 
-// TODO: Welcome Banner -> console.log
-console.log(chalk.orange.bold('======================================================================================================='));
-console.log(``);
-console.log(chalk.green.bold(figlet.textSync('EMPLOYEE TRACKER')));
-console.log(``);
-console.log(`                               ` + chalk.blue.bold('(C)ONTENT (M)ANAGEMENT (S)YSTEM')); 
-console.log(``);
-console.log(chalk.orange.bold(`=======================================================================================================`))
+    connection.connect(function (err) {
+        if (err) throw err;
+        console.log("connected as id " + connection.threadId);
+        console.log(`
+        ╔═══╗─────╔╗──────────────╔═╗╔═╗
+        ║╔══╝─────║║──────────────║║╚╝║║
+        ║╚══╦╗╔╦══╣║╔══╦╗─╔╦══╦══╗║╔╗╔╗╠══╦═╗╔══╦══╦══╦═╗
+        ║╔══╣╚╝║╔╗║║║╔╗║║─║║║═╣║═╣║║║║║║╔╗║╔╗╣╔╗║╔╗║║═╣╔╝
+        ║╚══╣║║║╚╝║╚╣╚╝║╚═╝║║═╣║═╣║║║║║║╔╗║║║║╔╗║╚╝║║═╣║
+        ╚═══╩╩╩╣╔═╩═╩══╩═╗╔╩══╩══╝╚╝╚╝╚╩╝╚╩╝╚╩╝╚╩═╗╠══╩╝
+        ───────║║──────╔═╝║─────────────────────╔═╝║
+        ───────╚╝──────╚══╝─────────────────────╚══╝
+        `)
+        // runs the app
+        firstPrompt();
+    });
 
 // TODO: Create prompts / arrays 
 
