@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
 // string styling
-const chalk = import('chalk');
+const chalk = require('chalk');
 
 // FIGFont in Javascript
 const figlet = require('figlet');
