@@ -31,7 +31,7 @@ connection.connect(function(err) {
 });
 
 // TODO: Create prompts / arrays 
-
+// FIRST PROMPT ===============================================================
 const firstPrompt = () => {
 
     inquirer
@@ -48,7 +48,7 @@ const firstPrompt = () => {
                 "Add New Role", 
                 "Add New Department", 
                 "Update Employee Manager",
-                // console.log(`===========`),
+                console.log(`======================`),
                 "Delete Employee",
                 "Delete Role",
                 "Delete Department",
@@ -108,8 +108,9 @@ const viewAllEmployees = () => {
     connection.query(query, (err, res) => {
         if (err) throw err;
         console.table(res);
+        firstPrompt();
     })
-    firstPrompt();
+    
 }
 
 // VIEW ALL ROLES ===============================================================
@@ -118,8 +119,9 @@ const viewAllRoles = () => {
     connection.query(query, (err, res) => {
         if (err) throw err; 
         console.table(res);
+        firstPrompt();
     })
-    firstPrompt();
+    
 };
 
 // VIEW ALL DEPTS ===============================================================
@@ -128,33 +130,73 @@ const viewAllDepartments = () => {
     connection.query(query, (err, res) => {
         if (err) throw err; 
         console.table(res); 
+        firstPrompt();
     })
-    firstPrompt();
 }
 
+// VIEW EMPLOYEES BY MANAGER ===============================================================
 const viewEmployeesByManager = () => {
     const query = 'SELECT * FROM employee ORDER BY manager_id DESC';
     connection.query(query, (err, res) => {
         if (err) throw err; 
         console.table(res);
+        firstPrompt();
     })
-    firstPrompt();
 }
+
+// UPDATE EMPLOYEE ROLE ===============================================================
 // const updateEmployeeRole = () => {
 //     connection.query('SELECT * FROM employee', (err, employees) => {
-//         if (err) console.log(err);
+//         if (err) console.log(err); 
 //         employees = employees.map((employee) => {
 //             return {
 //                 name: `${employee.first_name} ${employee.last_name}`,
 //                 value: employee.id,
 //             };
 //         });
-//         connection.query('SELECT * FROM role' (err, roles) => {
-            
-//         })
-//     })
-// }
-
+//         connection.query('SELECT * FROM role', (err, roles) => {
+//             if (err) console.log(err); 
+//             roles = roles.map((role) => {
+//                 return {
+//                     name: role.title, 
+//                     value: role.id, 
+//                 }
+//             });
+//             inquirer
+//                 .prompt([
+//                     {
+//                         type: 'list',
+//                         name: 'selectEmployee', 
+//                         message: 'Select employee to update', 
+//                         choices: employees, 
+//                     },
+//                     {
+//                         type: 'list',
+//                         name: 'selectNewRole', 
+//                         message: 'Select new employee role', 
+//                         choices: roles, 
+//                     },
+//                 ])
+//                 .then((data) => {
+//                     connection.query('UPDATE employee SET ? WHERE ?',
+//                         [
+//                             {
+//                                 role_id: data.selectNewRole, 
+//                             },
+//                             {
+//                                 id: data.selectEmployee,
+//                             },
+//                         ],
+//                         function (err) {
+//                             if (err) throw err;
+//                         }
+//                     );
+//                     console.log('Employee role updated');
+//                     viewAllRoles();
+//                 });
+//         });
+//     });
+// };
 
 // TODO: ADD Functions 
 // ADD NEW EMPLOYEE ===============================================================
