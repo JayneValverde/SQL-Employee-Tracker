@@ -1,7 +1,8 @@
 # SQL-Employee-Tracker
-### Jayné M. Valverde
+## Jayné M. Valverde <br> 
+Employee Tracker using MySQL <br> 
 
-Employee Tracker using MySQL
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description : 
 ***MySQL*** <br>
@@ -12,7 +13,10 @@ It is built as a command-line app using *Node.js*, *Inquirer*, and *MySQL*.
 ## Table of COntents : 
 * [User Story](#user-story)
 * [Acceptance Criteria](#acceptance-criteria)
+* [Installation](#installation)
+* [Usage](#usage)
 * [Screenshots](#screenshots)
+* [License](#license)
 * [Resources](#resources)
 * [Questions](#questions)
 
@@ -22,6 +26,7 @@ AS A a business owner
 I WANT to be able to view and manage the departments, roles and employees in my company
 SO THAT I can organize and plan my business 
 ```
+![screenshot example](./images/demo(example).png)
 
 ## Acceptance Criteria : 
 ```
@@ -40,15 +45,27 @@ WHEN I choose to add an employee
 THEN I am prompted to enter the employee's first name, last name, role and manager - that employee is added to the database
 WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and their information is updated in the database
-
-
 ```
+## Installation : 
+* Clone from GitHub
+* Open project directory, then do an `npm install` of all required dependencies.
+
+## Usage : 
+* Install `npm init -y` to create a new .json file
+* `npm i`
+* `npm i inquirer`
+* `npm i console.table`
+* Make sure to run `mysql -u root -p` to gain access to MYSQL before continuing 
+* `npm start`
+* Run through prompts as required 
 
 ## Screenshots : 
-
+![Landing page](./images/landing%20page.png)
 
 ## Resources : 
 
+## License :
+This project is licensed under MIT
 
 ## Questions : 
 Follow me on GitHub at [JayneValverde](https://github.com/JayneValverde) <br>
