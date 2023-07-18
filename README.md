@@ -4,7 +4,7 @@ Employee Tracker using MySQL <br>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### **_[LINK TO WALKTHROUGH VIDEO](https://youtu.be/5fZuztfderE)_**
+### **_[LINK TO WALKTHROUGH VIDEO](https://www.youtube.com/watch?v=hUyMRiJQq0Y)_**
 
 ## Description : 
 ***MySQL*** <br>
