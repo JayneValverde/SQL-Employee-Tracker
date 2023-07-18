@@ -4,6 +4,8 @@ Employee Tracker using MySQL <br>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+### **_[LINK TO WALKTHROUGH VIDEO](https://youtu.be/5fZuztfderE)_**
+
 ## Description : 
 ***MySQL*** <br>
 This applicaiton with allow non-developers to easily view and interact with a *company's employee database using a **content managment system(CMS)**. 
@@ -63,6 +65,12 @@ THEN I am prompted to select an employee to update and their new role and their 
 ![Landing page](./images/landing%20page.png)
 
 ## Resources : 
+
+**ASK BCS**: <br>
+Again, this week I opened alot of tickets and asked for lots of help from BCS. I would not have gotten this code to where it is without them. Hopped on a few zoom calls and they fixed a lot of syntax problems I kept running into. 
+
+**MODULE 12 assignments**: <br>
+I leaned heavily and taking code from assignments we went through in class. 
 
 ## License :
 This project is licensed under MIT
