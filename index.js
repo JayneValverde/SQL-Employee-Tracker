@@ -14,21 +14,21 @@ const connection = mysql.createConnection({
         database: 'employee_db'
     });
 
-connection.connect(function(err) {
-    if(err) throw err;
-    console.log("connected as id " + connection.threadId);
-    console.log(`
-    ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
-    ▐  ▄▀   ▐ █  █ ▀  █ █   █   █ █    █    █      █ █   ▀▄ ▄▀ ▐  ▄▀   ▐ ▐  ▄▀   ▐     █    █  ▐ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀ ▐  ▄▀   ▐ █   █   █ 
-        █▄▄▄▄▄  ▐  █    █ ▐  █▀▀▀▀  ▐    █    █      █ ▐     █     █▄▄▄▄▄    █▄▄▄▄▄      ▐   █     ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄    █▄▄▄▄▄  ▐  █▀▀█▀  
-        █    ▌    █    █     █          █     ▀▄    ▄▀       █     █    ▌    █    ▌         █       ▄▀    █   ▄▀   █   █        █   █   █    ▌   ▄▀    █  
-        ▄▀▄▄▄▄   ▄▀   ▄▀    ▄▀         ▄▀▄▄▄▄▄▄▀ ▀▀▀▀       ▄▀     ▄▀▄▄▄▄    ▄▀▄▄▄▄        ▄▀       █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █   ▄▀▄▄▄▄   █     █   
-        █    ▐   █    █    █           █                    █      █    ▐    █    ▐       █         ▐     ▐   ▐   ▐   █     ▐  █    ▐   █    ▐   ▐     ▐   
-        ▐        ▐    ▐    ▐           ▐                    ▐      ▐         ▐            ▐                           ▐        ▐        ▐                  
-    `)
-    // runs the app
-    firstPrompt();
-});
+    connection.connect(function(err) {
+        if(err) throw err;
+        console.log("connected as id " + connection.threadId);
+        console.log(`
+        ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
+        ▐  ▄▀   ▐ █  █ ▀  █ █   █   █ █    █    █      █ █   ▀▄ ▄▀ ▐  ▄▀   ▐ ▐  ▄▀   ▐     █    █  ▐ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀ ▐  ▄▀   ▐ █   █   █ 
+          █▄▄▄▄▄  ▐  █    █ ▐  █▀▀▀▀  ▐    █    █      █ ▐     █     █▄▄▄▄▄    █▄▄▄▄▄      ▐   █     ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄    █▄▄▄▄▄  ▐  █▀▀█▀  
+          █    ▌    █    █     █          █     ▀▄    ▄▀       █     █    ▌    █    ▌         █       ▄▀    █   ▄▀   █   █        █   █   █    ▌   ▄▀    █  
+         ▄▀▄▄▄▄   ▄▀   ▄▀    ▄▀         ▄▀▄▄▄▄▄▄▀ ▀▀▀▀       ▄▀     ▄▀▄▄▄▄    ▄▀▄▄▄▄        ▄▀       █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █   ▄▀▄▄▄▄   █     █   
+         █    ▐   █    █    █           █                    █      █    ▐    █    ▐       █         ▐     ▐   ▐   ▐   █     ▐  █    ▐   █    ▐   ▐     ▐   
+         ▐        ▐    ▐    ▐           ▐                    ▐      ▐         ▐            ▐                           ▐        ▐        ▐                  
+        `)
+        // runs the app
+        firstPrompt();
+    });
 
 // TODO: Create prompts / arrays 
 
@@ -40,12 +40,12 @@ const firstPrompt = () => {
             type: 'list',
             message: 'PLEASE SELECT A MENU OPTION...',
             choices: [
-                "View Employees",
+                "View All Employees",
                 "View All Roles",
                 "View All Departments",
                 "Update Employee Role",
-                "Add Employee",
-                "Add Roll", 
+                "Add New Employee",
+                "Add New Role", 
                 "Add New Department", 
                 "Update Employee Manager",
                 // console.log(`===========`),
@@ -60,7 +60,7 @@ const firstPrompt = () => {
             if (choices === 'View All Employees') {
                 viewAllEmployees();
             }
-            if (choices === 'View All Rolles') {
+            if (choices === 'View All Roles') {
                 viewAllRoles();
             }
             if (choices === 'View All Departments') {
@@ -73,10 +73,10 @@ const firstPrompt = () => {
                 updateEmployeeRole();
             }
             if (choices === 'Add New Employee') {
-                addNewRole();
+                addNewEmployee();
             }
-            if (choices === 'Add New Roll') {
-                addNewDepartment();
+            if (choices === 'Add New Role') {
+                addNewRole();
             }
             if (choices === 'Add New Department') {
                 addNewDepartment();
@@ -111,7 +111,7 @@ const viewAllEmployees = () => {
 }
 
 const viewAllRoles = () => {
-    const query = 'SELECT * FROM employee';
+    const query = 'SELECT * FROM role';
     connection.query(query, (err, res) => {
         if (err) throw err; 
         console.table(res);
@@ -120,7 +120,7 @@ const viewAllRoles = () => {
 }
 
 const viewAllDepartments = () => {
-    const query = 'SELECT * FROM employee';
+    const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
         if (err) throw err; 
         console.table(res); 
@@ -136,9 +136,20 @@ const viewEmployeesByManager = () => {
     })
     firstPrompt();
 }
-
-
-// TODO: VIEW Functions 
+// const updateEmployeeRole = () => {
+//     connection.query('SELECT * FROM employee', (err, employees) => {
+//         if (err) console.log(err);
+//         employees = employees.map((employee) => {
+//             return {
+//                 name: `${employee.first_name} ${employee.last_name}`,
+//                 value: employee.id,
+//             };
+//         });
+//         connection.query('SELECT * FROM role' (err, roles) => {
+            
+//         })
+//     })
+// }
 
 
 // TODO: ADD Functions 
