@@ -8,16 +8,16 @@ require('console.table');
 // TODO: Connect to database
 const connection = mysql.createConnection({
         host: 'localhost',
-        port: 3306,
+        // port: 3306,
         user: 'root',
         password: 'Waffles90!',
         database: 'employee_db'
     });
 
-    connection.connect(function(err) {
-        if(err) throw err;
-        console.log("connected as id " + connection.threadId);
-        console.log(`
+connection.connect(function(err) {
+    if(err) throw err;
+    console.log("connected as id " + connection.threadId);
+    console.log(`
         ▄▀▀█▄▄▄▄  ▄▀▀▄ ▄▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀▀▀▄    ▄▀▀▀▀▄   ▄▀▀▄ ▀▀▄  ▄▀▀█▄▄▄▄  ▄▀▀█▄▄▄▄      ▄▀▀▀█▀▀▄  ▄▀▀▄▀▀▀▄  ▄▀▀█▄   ▄▀▄▄▄▄   ▄▀▀▄ █  ▄▀▀█▄▄▄▄  ▄▀▀▄▀▀▀▄ 
         ▐  ▄▀   ▐ █  █ ▀  █ █   █   █ █    █    █      █ █   ▀▄ ▄▀ ▐  ▄▀   ▐ ▐  ▄▀   ▐     █    █  ▐ █   █   █ ▐ ▄▀ ▀▄ █ █    ▌ █  █ ▄▀ ▐  ▄▀   ▐ █   █   █ 
           █▄▄▄▄▄  ▐  █    █ ▐  █▀▀▀▀  ▐    █    █      █ ▐     █     █▄▄▄▄▄    █▄▄▄▄▄      ▐   █     ▐  █▀▀█▀    █▄▄▄█ ▐ █      ▐  █▀▄    █▄▄▄▄▄  ▐  █▀▀█▀  
@@ -25,10 +25,10 @@ const connection = mysql.createConnection({
          ▄▀▄▄▄▄   ▄▀   ▄▀    ▄▀         ▄▀▄▄▄▄▄▄▀ ▀▀▀▀       ▄▀     ▄▀▄▄▄▄    ▄▀▄▄▄▄        ▄▀       █     █   █   ▄▀   ▄▀▄▄▄▄▀ ▄▀   █   ▄▀▄▄▄▄   █     █   
          █    ▐   █    █    █           █                    █      █    ▐    █    ▐       █         ▐     ▐   ▐   ▐   █     ▐  █    ▐   █    ▐   ▐     ▐   
          ▐        ▐    ▐    ▐           ▐                    ▐      ▐         ▐            ▐                           ▐        ▐        ▐                  
-        `)
-        // runs the app
-        firstPrompt();
-    });
+    `)
+    // runs the app
+    firstPrompt();
+});
 
 // TODO: Create prompts / arrays 
 
@@ -98,9 +98,11 @@ const firstPrompt = () => {
                 connection.end();
             }
         });
+        
 };
 
 // SQL SELECT * FROM statments for choices 
+// VIEW ALL EMPLOYEES ===============================================================
 const viewAllEmployees = () => {
     const query = 'SELECT * FROM employee';
     connection.query(query, (err, res) => {
@@ -110,6 +112,7 @@ const viewAllEmployees = () => {
     firstPrompt();
 }
 
+// VIEW ALL ROLES ===============================================================
 const viewAllRoles = () => {
     const query = 'SELECT * FROM role';
     connection.query(query, (err, res) => {
@@ -117,8 +120,9 @@ const viewAllRoles = () => {
         console.table(res);
     })
     firstPrompt();
-}
+};
 
+// VIEW ALL DEPTS ===============================================================
 const viewAllDepartments = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
@@ -279,11 +283,11 @@ const addNewDepartment = () => {
         });
 };
 
-connection.connect((err) => {
-    if (err) throw err; 
+// connection.connect((err) => {
+//     if (err) throw err; 
 
-    firstPrompt();
-});
+//     firstPrompt();
+// });
 
 
 
