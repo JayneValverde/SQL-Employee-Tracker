@@ -1,14 +1,13 @@
-// TODO: Include packages needed 
+// Include packages needed 
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
 // Print MySQL rows to the console 
 require('console.table');
 
-// TODO: Connect to database
+// Connect to database
 const connection = mysql.createConnection({
         host: 'localhost',
-        // port: 3306,
         user: 'root',
         password: 'Waffles90!',
         database: 'employee_db'
@@ -30,7 +29,7 @@ connection.connect(function(err) {
     firstPrompt();
 });
 
-// TODO: Create prompts / arrays 
+// Create prompts / arrays 
 // FIRST PROMPT ===============================================================
 const firstPrompt = () => {
 
@@ -43,16 +42,12 @@ const firstPrompt = () => {
                 "View All Employees",
                 "View All Roles",
                 "View All Departments",
+                "View Employees By Manager",
                 "Update Employee Role",
                 "Add New Employee",
                 "Add New Role", 
                 "Add New Department", 
-                "Update Employee Manager",
-                console.log(`======================`),
-                "Delete Employee",
-                "Delete Role",
-                "Delete Department",
-                "Exut Menu",
+                "Exit Menu",
             ],
         }).then((answers) => {
             const { choices } = answers; 
@@ -81,24 +76,11 @@ const firstPrompt = () => {
             if (choices === 'Add New Department') {
                 addNewDepartment();
             }
-            if (choices === 'Update Employee Managers') {
-                updateEmployeeManagers();
-            }
-            if (choices === 'Delete Employee') {
-                deleteEmployee();
-            }
-            if (choices === 'Delete Role') {
-                deleteRole();
-            }
-            if (choices === 'Delete Department') {
-                deleteDepartment();
-            }
             if (choices === 'Exit Menu') {
                 console.log('Logged out! Type npm start to login')
                 connection.end();
             }
         });
-        
 };
 
 // SQL SELECT * FROM statments for choices 
@@ -110,8 +92,7 @@ const viewAllEmployees = () => {
         console.table(res);
         firstPrompt();
     })
-    
-}
+};
 
 // VIEW ALL ROLES ===============================================================
 const viewAllRoles = () => {
@@ -121,10 +102,9 @@ const viewAllRoles = () => {
         console.table(res);
         firstPrompt();
     })
-    
 };
 
-// VIEW ALL DEPTS ===============================================================
+// VIEW ALL DEPARTMENTS ===============================================================
 const viewAllDepartments = () => {
     const query = 'SELECT * FROM department';
     connection.query(query, (err, res) => {
@@ -132,9 +112,9 @@ const viewAllDepartments = () => {
         console.table(res); 
         firstPrompt();
     })
-}
+};
 
-// VIEW EMPLOYEES BY MANAGER ===============================================================
+// (BONUS) VIEW EMPLOYEES BY MANAGER ===============================================================
 const viewEmployeesByManager = () => {
     const query = 'SELECT * FROM employee ORDER BY manager_id DESC';
     connection.query(query, (err, res) => {
@@ -142,63 +122,63 @@ const viewEmployeesByManager = () => {
         console.table(res);
         firstPrompt();
     })
-}
+};
 
 // UPDATE EMPLOYEE ROLE ===============================================================
-// const updateEmployeeRole = () => {
-//     connection.query('SELECT * FROM employee', (err, employees) => {
-//         if (err) console.log(err); 
-//         employees = employees.map((employee) => {
-//             return {
-//                 name: `${employee.first_name} ${employee.last_name}`,
-//                 value: employee.id,
-//             };
-//         });
-//         connection.query('SELECT * FROM role', (err, roles) => {
-//             if (err) console.log(err); 
-//             roles = roles.map((role) => {
-//                 return {
-//                     name: role.title, 
-//                     value: role.id, 
-//                 }
-//             });
-//             inquirer
-//                 .prompt([
-//                     {
-//                         type: 'list',
-//                         name: 'selectEmployee', 
-//                         message: 'Select employee to update', 
-//                         choices: employees, 
-//                     },
-//                     {
-//                         type: 'list',
-//                         name: 'selectNewRole', 
-//                         message: 'Select new employee role', 
-//                         choices: roles, 
-//                     },
-//                 ])
-//                 .then((data) => {
-//                     connection.query('UPDATE employee SET ? WHERE ?',
-//                         [
-//                             {
-//                                 role_id: data.selectNewRole, 
-//                             },
-//                             {
-//                                 id: data.selectEmployee,
-//                             },
-//                         ],
-//                         function (err) {
-//                             if (err) throw err;
-//                         }
-//                     );
-//                     console.log('Employee role updated');
-//                     viewAllRoles();
-//                 });
-//         });
-//     });
-// };
+const updateEmployeeRole = () => {
+    connection.query('SELECT * FROM employee', (err, employees) => {
+        if (err) console.log(err); 
+        employees = employees.map((employee) => {
+            return {
+                name: `${employee.first_name} ${employee.last_name}`,
+                value: employee.id,
+            };
+        });
+        connection.query('SELECT * FROM role', (err, roles) => {
+            if (err) console.log(err); 
+            roles = roles.map((role) => {
+                return {
+                    name: role.title, 
+                    value: role.id, 
+                }
+            });
+            inquirer
+                .prompt([
+                    {
+                        type: 'list',
+                        name: 'selectEmployee', 
+                        message: 'Select employee to update', 
+                        choices: employees, 
+                    },
+                    {
+                        type: 'list',
+                        name: 'selectNewRole', 
+                        message: 'Select new employee role', 
+                        choices: roles, 
+                    },
+                ])
+                .then((data) => {
+                    connection.query('UPDATE employee SET ? WHERE ?',
+                        [
+                            {
+                                role_id: data.selectNewRole, 
+                            },
+                            {
+                                id: data.selectEmployee,
+                            },
+                        ],
+                        function (err) {
+                            if (err) throw err;
+                        }
+                    );
+                    console.log('Employee role updated');
+                    viewAllRoles();
+                });
+        });
+    });
+};
 
-// TODO: ADD Functions 
+// ==============================================================================================================================
 // ADD NEW EMPLOYEE ===============================================================
 const addNewEmployee = () => {
     connection.query('SELECT * FROM role', (err, roles) => {
@@ -324,13 +304,3 @@ const addNewDepartment = () => {
         viewAllDepartments();
         });
 };
-
-// connection.connect((err) => {
-//     if (err) throw err; 
-
-//     firstPrompt();
-// });
-
-
-
-// TODO: Async Funcitons? 
